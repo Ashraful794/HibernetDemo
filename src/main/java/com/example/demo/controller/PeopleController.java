@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.models.Image;
 import com.example.demo.models.People;
 import com.example.demo.models.Post;
 import com.example.demo.service.PeopleService;
@@ -45,9 +46,21 @@ public class PeopleController {
 	    return null;
 	}
 	
+	
+	@GetMapping("/people/{id}/images")
+	public List<Image> getImagesByUser(@PathVariable Integer id) {
+		
+	    Optional<People> people = peopleService.findById(id);
+	    if(people.isPresent()) {
+	    	return people.get().getImages();
+	    }
+	    return null;
+	}
+	
+	
 	@GetMapping("/peoples/location/{id}/peoples")
 	public List<People> getUsersByLocation(@PathVariable Integer id) {
-	    return peopleService.getUsersByLocation(id);
+	    return peopleService.getPeoplesByLocation(id);
 	}
 	
 	@PostMapping("/peoples/addNew")

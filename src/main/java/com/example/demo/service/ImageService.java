@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,4 +49,21 @@ public class ImageService {
 		// TODO Auto-generated method stub
 		return imageRepository.findAll();
 	}
+	
+	public Optional<Image> findById(int id) {
+		// TODO Auto-generated method stub
+		return imageRepository.findById(id);
+	}
+	
+	public void deleteImage(int id)
+	{
+		imageRepository.deleteById(id);
+	}
+	public Optional<Image> findById(Integer id) {
+		// TODO Auto-generated method stub
+		return imageRepository.findById(id);
+	}
+		
+	
+	
 }

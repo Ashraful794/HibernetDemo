@@ -25,7 +25,7 @@ public class PeopleService {
 		return peopleRepository.findById(id);
 	}
 	
-	public List<People> getUsersByLocation(Integer id) {
+	public List<People> getPeoplesByLocation(Integer id) {
 	    return peopleRepository.findByLocationId(id);
 	}
 	

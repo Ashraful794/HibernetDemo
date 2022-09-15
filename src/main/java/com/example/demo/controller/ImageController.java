@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +32,17 @@ public class ImageController
 	public List<Image> getAllImage() {
 	    return imageService.findAll();
 	}
-
+	
+	@GetMapping("/image/{id}")
+	public Optional<Image> getPeopleById(@PathVariable Integer id)
+	{
+		return imageService.findById(id);
+	}
+	
+	@DeleteMapping("/image/{id}/delete")
+	public void deleteImage(@PathVariable Integer id) {
+		imageService.deleteImage(id);		
+	}
+	
 
 }
